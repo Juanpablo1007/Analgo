@@ -1,145 +1,3 @@
-TY  - JOUR
-TI  - Securing Consumer Electronics Devices: A Blockchain-Based Access Management Approach Enhanced by Deep Learning Threat Modeling for IoT Ecosystems
-T2  - IEEE Access
-SP  - 1
-EP  - 1
-AU  - M. M. Asiri
-AU  - H. Alfraihi
-AU  - Y. Said
-AU  - K. M. Othman
-AU  - A. S. Salama
-AU  - R. Marzouk
-PY  - 2024
-DO  - 10.1109/ACCESS.2024.3441094
-JO  - IEEE Access
-IS  - 
-SN  - 2169-3536
-VO  - 
-VL  - 
-JA  - IEEE Access
-Y1  - 
-ER  - 
-
-
-
-TY  - CONF
-TI  - AI-Powered Automated Criticism Design Tool Based on Texts and its Themes
-T2  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-SP  - 1528
-EP  - 1533
-AU  - K. Saddhono
-AU  - N. Saputra
-AU  - E. Saragih
-AU  - E. L. B. Rumapea
-AU  - S. N. Tarigan
-AU  - C. Hasanudin
-PY  - 2024
-DO  - 10.1109/ICACITE60783.2024.10617194
-JO  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-IS  - 
-SN  - 
-VO  - 
-VL  - 
-JA  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-Y1  - 14-15 May 2024
-ER  - 
-
-
-
-TY  - CONF
-TI  - From Words to Algorithms: The to Get Evolution of Indonesia in Terms of Literature via AI Technology
-T2  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-SP  - 1568
-EP  - 1572
-AU  - K. Saddhono
-AU  - S. Rosa
-AU  - E. Martiningsih
-AU  - L. Judijanto
-AU  - Sultan
-AU  - W. Rahmat
-PY  - 2024
-DO  - 10.1109/ICACITE60783.2024.10616427
-JO  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-IS  - 
-SN  - 
-VO  - 
-VL  - 
-JA  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-Y1  - 14-15 May 2024
-ER  - 
-
-
-
-TY  - CONF
-TI  - Reexamining Disposition in AI Models Impact in Building Fiction based Characters
-T2  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-SP  - 1327
-EP  - 1332
-AU  - R. B. Bhise
-AU  - R. Puyed
-AU  - S. K. Rane
-AU  - S. R. Bhise
-PY  - 2024
-DO  - 10.1109/ICACITE60783.2024.10617440
-JO  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-IS  - 
-SN  - 
-VO  - 
-VL  - 
-JA  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-Y1  - 14-15 May 2024
-ER  - 
-
-
-
-TY  - CONF
-TI  - A Development of Cloud Based Robotics Design Networks for Industry Applications
-T2  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-SP  - 320
-EP  - 325
-AU  - S. G
-AU  - N. Varshney
-AU  - P. Sharma
-AU  - B. J. Punitha
-AU  - R. Sundar
-AU  - S. P. V. SubbaRao
-PY  - 2024
-DO  - 10.1109/ICACITE60783.2024.10616950
-JO  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-IS  - 
-SN  - 
-VO  - 
-VL  - 
-JA  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-Y1  - 14-15 May 2024
-ER  - 
-
-
-
-TY  - CONF
-TI  - An Intensive Review Analysis about Fuzzy Logic usage in Smart Medical Care System
-T2  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-SP  - 918
-EP  - 923
-AU  - V. Kumar
-AU  - D. Saini
-AU  - S. Rastogi
-AU  - R. Raman
-AU  - A. Verma
-AU  - R. Meenakshi
-PY  - 2024
-DO  - 10.1109/ICACITE60783.2024.10616877
-JO  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-IS  - 
-SN  - 
-VO  - 
-VL  - 
-JA  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
-Y1  - 14-15 May 2024
-ER  - 
-
-
-
 TY  - CONF
 TI  - SCAPE: Searching Conceptual Architecture Prompts using Evolution
 T2  - 2024 IEEE Congress on Evolutionary Computation (CEC)
@@ -578,6 +436,148 @@ SN  - 0899-3408
 M3  - doi: 10.1080/08993408.2020.1866932
 UR  - https://doi.org/10.1080/08993408.2020.1866932
 ER  -
+
+TY  - JOUR
+TI  - Securing Consumer Electronics Devices: A Blockchain-Based Access Management Approach Enhanced by Deep Learning Threat Modeling for IoT Ecosystems
+T2  - IEEE Access
+SP  - 1
+EP  - 1
+AU  - M. M. Asiri
+AU  - H. Alfraihi
+AU  - Y. Said
+AU  - K. M. Othman
+AU  - A. S. Salama
+AU  - R. Marzouk
+PY  - 2024
+DO  - 10.1109/ACCESS.2024.3441094
+JO  - IEEE Access
+IS  - 
+SN  - 2169-3536
+VO  - 
+VL  - 
+JA  - IEEE Access
+Y1  - 
+ER  - 
+
+
+
+TY  - CONF
+TI  - AI-Powered Automated Criticism Design Tool Based on Texts and its Themes
+T2  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+SP  - 1528
+EP  - 1533
+AU  - K. Saddhono
+AU  - N. Saputra
+AU  - E. Saragih
+AU  - E. L. B. Rumapea
+AU  - S. N. Tarigan
+AU  - C. Hasanudin
+PY  - 2024
+DO  - 10.1109/ICACITE60783.2024.10617194
+JO  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+Y1  - 14-15 May 2024
+ER  - 
+
+
+
+TY  - CONF
+TI  - From Words to Algorithms: The to Get Evolution of Indonesia in Terms of Literature via AI Technology
+T2  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+SP  - 1568
+EP  - 1572
+AU  - K. Saddhono
+AU  - S. Rosa
+AU  - E. Martiningsih
+AU  - L. Judijanto
+AU  - Sultan
+AU  - W. Rahmat
+PY  - 2024
+DO  - 10.1109/ICACITE60783.2024.10616427
+JO  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+Y1  - 14-15 May 2024
+ER  - 
+
+
+
+TY  - CONF
+TI  - Reexamining Disposition in AI Models Impact in Building Fiction based Characters
+T2  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+SP  - 1327
+EP  - 1332
+AU  - R. B. Bhise
+AU  - R. Puyed
+AU  - S. K. Rane
+AU  - S. R. Bhise
+PY  - 2024
+DO  - 10.1109/ICACITE60783.2024.10617440
+JO  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+Y1  - 14-15 May 2024
+ER  - 
+
+
+
+TY  - CONF
+TI  - A Development of Cloud Based Robotics Design Networks for Industry Applications
+T2  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+SP  - 320
+EP  - 325
+AU  - S. G
+AU  - N. Varshney
+AU  - P. Sharma
+AU  - B. J. Punitha
+AU  - R. Sundar
+AU  - S. P. V. SubbaRao
+PY  - 2024
+DO  - 10.1109/ICACITE60783.2024.10616950
+JO  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+Y1  - 14-15 May 2024
+ER  - 
+
+
+
+TY  - CONF
+TI  - An Intensive Review Analysis about Fuzzy Logic usage in Smart Medical Care System
+T2  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+SP  - 918
+EP  - 923
+AU  - V. Kumar
+AU  - D. Saini
+AU  - S. Rastogi
+AU  - R. Raman
+AU  - A. Verma
+AU  - R. Meenakshi
+PY  - 2024
+DO  - 10.1109/ICACITE60783.2024.10616877
+JO  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2024 4th International Conference on Advance Computing and Innovative Technologies in Engineering (ICACITE)
+Y1  - 14-15 May 2024
+ER  - 
+
+
 
 TY  - JOUR
 T1  - Computational thinking and programming with Arduino in education: A systematic review for secondary education

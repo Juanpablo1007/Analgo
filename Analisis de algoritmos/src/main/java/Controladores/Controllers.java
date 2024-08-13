@@ -13,6 +13,7 @@ import java.util.List;
 public class Controllers {
 
     private static List<Metadatos> metadatos = new ArrayList<>();
+    private static List <String> contenidoUnico = new ArrayList<>();
 
     public static void construirMetadatos(String folderPath) {
         try {
@@ -37,7 +38,7 @@ public class Controllers {
     }
 
     public static int combinarYGuardarArticulos(String outputFilePath) {
-        List<String> contenidoUnico = new ArrayList<>();
+
 
 
         for (int i = 0; i < metadatos.size(); i++) {
@@ -78,26 +79,55 @@ public class Controllers {
         return false;
     }
 
-    public static Metadatos encontrarArticuloMasCompleto() {
+    public static String encontrarArticuloMasCompleto() {
         if (metadatos.isEmpty()) {
             return null;
         }
 
-        Metadatos articuloMasCompleto = metadatos.get(0);
+        String nombreMasCompleto = "";
+        int maxMetadatosUnicos = 0;
 
-        for (int i = 1; i < metadatos.size(); i++) {
-            if (metadatos.get(i).getContenido().length() > articuloMasCompleto.getContenido().length()) {
-                articuloMasCompleto = metadatos.get(i);
+        for (int i = 0; i < metadatos.size(); i++) {
+            String contenido = metadatos.get(i).getContenido();
+            String[] articulos = contenido.split("TY  - ");
+
+            for (int j = 1; j < articulos.length; j++) {
+                String articulo = "TY  - " + articulos[j];
+                String[] lineas = articulo.split("\n");
+
+                int metadatosUnicos = 0;
+                List<String> tiposDeMetadatos = new ArrayList<>();
+
+                for (int k = 0; k < lineas.length; k++) {
+                    String linea = lineas[k].trim();
+
+                    if (!linea.isEmpty() && !linea.startsWith("ER  -")) {
+                        String tipoDeMetadato = linea.substring(0, Math.min(2, linea.length()));
+
+
+                        if (!tiposDeMetadatos.contains(tipoDeMetadato)) {
+                            metadatosUnicos++;
+                            tiposDeMetadatos.add(tipoDeMetadato);
+                        }
+                    }
+                }
+
+
+                if (metadatosUnicos > maxMetadatosUnicos) {
+                    maxMetadatosUnicos = metadatosUnicos;
+                    nombreMasCompleto = metadatos.get(i).getNombre();
+                }
             }
         }
 
-        return articuloMasCompleto;
+        return nombreMasCompleto;
     }
+
 
     public static void main(String[] args) {
         construirMetadatos("Articulos");
         int totalArticulosUnicos = combinarYGuardarArticulos("articulos_combinados.txt");
         System.out.println("Total de artículos únicos en el archivo combinado: " + totalArticulosUnicos);
-
+        System.out.println("la base de datos que tiene los resultados mas completos es: " + encontrarArticuloMasCompleto());
     }
 }
