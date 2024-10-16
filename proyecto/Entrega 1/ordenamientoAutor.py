@@ -204,6 +204,30 @@ def binary_insertion_sort(arr):
         j = binary_search(arr, val, 0, i - 1)
         arr = arr[:j] + [val] + arr[j:i] + arr[i + 1:]
     return arr
+# Implementación de Bitonic Sort
+def compAndSwap(arr, i, j, dire):
+    if (dire == 1 and arr[i] > arr[j]) or (dire == 0 and arr[i] < arr[j]):
+        arr[i], arr[j] = arr[j], arr[i]
+
+def bitonicMerge(arr, low, cnt, dire):
+    if cnt > 1:
+        k = cnt // 2
+        for i in range(low, low + k):
+            compAndSwap(arr, i, i + k, dire)
+        bitonicMerge(arr, low, k, dire)
+        bitonicMerge(arr, low + k, k, dire)
+
+def bitonicSort(arr, low, cnt, dire):
+    if cnt > 1:
+        k = cnt // 2
+        bitonicSort(arr, low, k, 1)  # Ordenar en orden ascendente
+        bitonicSort(arr, low + k, k, 0)  # Ordenar en orden descendente
+        bitonicMerge(arr, low, cnt, dire)
+
+def sort_bitonic(arr):
+    n = len(arr)
+    bitonicSort(arr, 0, n, 1)
+    return arr
 
 # Implementación de Radix Sort
 def radix_sort(arr):
@@ -269,7 +293,8 @@ def seguimiento_ordenamiento(archivo_csv):
         "HeapSort": heap_sort,
         "GnomeSort": gnome_sort,
         "BinaryInsertionSort": binary_insertion_sort,
-        "RadixSort": radix_sort
+        "RadixSort": radix_sort,
+        "BitonicSort": sort_bitonic
     }
 
     # Aplicar cada algoritmo y medir el tiempo

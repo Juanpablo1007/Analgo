@@ -245,6 +245,32 @@ def counting_sort_tamanio(arr, arr_tamanios, exp):
     for i in range(n):
         arr[i] = output_strings[i]
 
+# Implementación de Bitonic Sort
+def compAndSwap(arr, i, j, dire):
+    if (dire == 1 and arr[i] > arr[j]) or (dire == 0 and arr[i] < arr[j]):
+        arr[i], arr[j] = arr[j], arr[i]
+
+def bitonicMerge(arr, low, cnt, dire):
+    if cnt > 1:
+        k = cnt // 2
+        for i in range(low, low + k):
+            compAndSwap(arr, i, i + k, dire)
+        bitonicMerge(arr, low, k, dire)
+        bitonicMerge(arr, low + k, k, dire)
+
+def bitonicSort(arr, low, cnt, dire):
+    if cnt > 1:
+        k = cnt // 2
+        bitonicSort(arr, low, k, 1)  # Ordenar en orden ascendente
+        bitonicSort(arr, low + k, k, 0)  # Ordenar en orden descendente
+        bitonicMerge(arr, low, cnt, dire)
+
+def sort_bitonic(arr):
+    n = len(arr)
+    bitonicSort(arr, 0, n, 1)
+    return arr
+
+
 # Función auxiliar para medir el tiempo de los algoritmos
 def medir_tiempo(algoritmo, data):
     start_time = time.time()
@@ -269,7 +295,8 @@ def seguimiento_ordenamiento(archivo_csv):
         "HeapSort": heap_sort,
         "GnomeSort": gnome_sort,
         "BinaryInsertionSort": binary_insertion_sort,
-        "RadixSort": radix_sort
+        "RadixSort": radix_sort,
+        "BitonicSort": sort_bitonic
     }
 
     # Aplicar cada algoritmo y medir el tiempo
