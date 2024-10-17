@@ -45,28 +45,57 @@ def selection_sort(arr):
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
     return arr
 
-# Implementación de Tree Sort
+# Implementación iterativa de Tree Sort para evitar desbordamiento
 class TreeNode:
     def __init__(self, key):
+        self.val = key
         self.left = None
         self.right = None
-        self.val = key
 
-def insert(root, key):
+def insert_iter(root, key):
+    new_node = TreeNode(key)
     if root is None:
-        return TreeNode(key)
-    else:
-        if ord(key[0]) < ord(root.val[0]):
-            root.left = insert(root.left, key)
+        return new_node
+    current = root
+    while True:
+        if ord(key[0]) < ord(current.val[0]):
+            if current.left is None:
+                current.left = new_node
+                break
+            else:
+                current = current.left
+        elif ord(key[0]) > ord(current.val[0]):
+            if current.right is None:
+                current.right = new_node
+                break
+            else:
+                current = current.right
         else:
-            root.right = insert(root.right, key)
+            # Compara más allá del primer carácter si son iguales
+            if key < current.val:
+                if current.left is None:
+                    current.left = new_node
+                    break
+                else:
+                    current = current.left
+            else:
+                if current.right is None:
+                    current.right = new_node
+                    break
+                else:
+                    current = current.right
     return root
 
 def inorder_traversal(root, res):
-    if root:
-        inorder_traversal(root.left, res)
-        res.append(root.val)
-        inorder_traversal(root.right, res)
+    stack = []
+    current = root
+    while stack or current:
+        while current:
+            stack.append(current)
+            current = current.left
+        current = stack.pop()
+        res.append(current.val)
+        current = current.right
 
 def tree_sort(arr):
     arr = [limpiar_cadena(cadena) for cadena in arr]
@@ -74,7 +103,7 @@ def tree_sort(arr):
         return arr
     root = None
     for key in arr:
-        root = insert(root, key)
+        root = insert_iter(root, key)
     sorted_arr = []
     inorder_traversal(root, sorted_arr)
     return sorted_arr
@@ -251,7 +280,7 @@ def medir_tiempo(algoritmo, data):
 
 def seguimiento_ordenamiento(archivo_csv):
     df = pd.read_csv(archivo_csv)
-    data = df["Autores"].dropna().tolist()  
+    data = df["Editorial"].dropna().tolist()  # Se utiliza la columna "Editorial"
 
     # Diccionario de algoritmos
     algoritmos = {
@@ -259,7 +288,7 @@ def seguimiento_ordenamiento(archivo_csv):
         "CombSort": comb_sort,
         "SelectionSort": selection_sort,
         "TreeSort": tree_sort,
-        "BucketSort ASCII": bucket_sort_ascii,  
+        "BucketSort ASCII": bucket_sort_ascii,
         "QuickSort": quick_sort,
         "HeapSort": heap_sort,
         "GnomeSort": gnome_sort,
@@ -280,7 +309,7 @@ def seguimiento_ordenamiento(archivo_csv):
         # Guardar resultados en la carpeta 'resultados'
         if not os.path.exists('resultados'):
             os.makedirs('resultados')
-        df_ordenado = pd.DataFrame(sorted_data, columns=["Autores"])
+        df_ordenado = pd.DataFrame(sorted_data, columns=["Editorial"])
         df_ordenado.to_csv(f"resultados/{nombre}_ordenado.csv", index=False)
         print(f"Archivo {nombre}_ordenado.csv guardado.")
     
@@ -306,3 +335,4 @@ def generar_diagrama(tiempos):
 if __name__ == "__main__":
     archivo_csv = "unified_articles.csv"  
     resultados = seguimiento_ordenamiento(archivo_csv)
+

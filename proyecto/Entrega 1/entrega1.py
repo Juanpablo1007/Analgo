@@ -55,9 +55,17 @@ def normalizar_columnas(df):
     df = df.loc[:, ~df.columns.duplicated()]
     return df
 
+def eliminar_duplicados_por_isbn_o_doi(df):
+    """Elimina las filas duplicadas basándose en la columna 'ISBN' o 'DOI'."""
+    if 'ISBN' in df.columns:
+        df = df.drop_duplicates(subset=['ISBN'], keep='first')
+    elif 'DOI' in df.columns:
+        df = df.drop_duplicates(subset=['DOI'], keep='first')
+    return df
+
 def obtener_menos_columnas(archivos):
     """Encuentra el archivo con menos columnas después de la normalización."""
-    dataframes = [normalizar_columnas(cargar_csv(archivo)) for archivo in archivos]
+    dataframes = [normalizar_columnas(eliminar_duplicados_por_isbn_o_doi(cargar_csv(archivo))) for archivo in archivos]
     return min(dataframes, key=lambda df: df.shape[1])
 
 def unificar_archivos_csv(archivos):
@@ -68,12 +76,12 @@ def unificar_archivos_csv(archivos):
 
     # Filtra y normaliza las columnas relevantes
     dataframes = [
-        normalizar_columnas(cargar_csv(archivo)).reindex(columns=columnas_relevantes, fill_value="")
+        normalizar_columnas(eliminar_duplicados_por_isbn_o_doi(cargar_csv(archivo))).reindex(columns=columnas_relevantes, fill_value="")
         for archivo in archivos
     ]
 
-    # Concatenar los DataFrames y eliminar duplicados de artículos
-    df_unificado = pd.concat(dataframes, ignore_index=True).drop_duplicates()
+    # Concatenar los DataFrames (ya sin duplicados por ISBN o DOI)
+    df_unificado = pd.concat(dataframes, ignore_index=True)
 
     return df_unificado
 
@@ -81,7 +89,8 @@ def main():
     archivos = [
         "export_sanitized.csv", 
         "export2024.10.15-18.47.42.csv", 
-        "unified_acm_data.csv"
+        "unified_acm_data.csv",
+        "resultados\scopus.csv"
     ]
 
     df_unificado = unificar_archivos_csv(archivos)
