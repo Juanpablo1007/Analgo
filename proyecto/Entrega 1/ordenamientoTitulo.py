@@ -354,7 +354,7 @@ def seguimiento_ordenamiento(archivo_csv):
         "BinaryInsertionSort": binary_insertion_sort,
         "RadixSort": radix_sort,
         "BitonicSort": sort_bitonic,
-        "PigeonholeSort": pigeonhole_sort
+        
     }
 
     # Aplicar cada algoritmo y medir el tiempo

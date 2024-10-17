@@ -148,6 +148,34 @@ def quick_sort(arr):
     right = [x for x in arr if ord(x[0]) > ord(pivot[0])]
     return quick_sort(left) + middle + quick_sort(right)
 
+# Implementación de Pigeonhole Sort
+def pigeonhole_sort(arr):
+    # Limpiar las cadenas antes de ordenar
+    arr = [limpiar_cadena(cadena) for cadena in arr]
+    
+    # Encuentra el mínimo y el máximo valor en el primer carácter ASCII de las cadenas
+    my_min = min(ord(cadena[0]) for cadena in arr)
+    my_max = max(ord(cadena[0]) for cadena in arr)
+    
+    # Calcula el rango de valores
+    size = my_max - my_min + 1
+    
+    # Lista de "pigeonholes" o huecos
+    holes = [[] for _ in range(size)]
+    
+    # Distribuir las cadenas en sus respectivos huecos
+    for cadena in arr:
+        index = ord(cadena[0]) - my_min
+        holes[index].append(cadena)
+    
+    # Recoger las cadenas ordenadas
+    sorted_arr = []
+    for hole in holes:
+        sorted_arr.extend(hole)
+    
+    return sorted_arr
+
+
 # Implementación de HeapSort
 def heapify(arr, n, i):
     largest = i
@@ -294,7 +322,8 @@ def seguimiento_ordenamiento(archivo_csv):
         "GnomeSort": gnome_sort,
         "BinaryInsertionSort": binary_insertion_sort,
         "RadixSort": radix_sort,
-        "BitonicSort": sort_bitonic
+        "BitonicSort": sort_bitonic,
+        "PigeonholeSort": pigeonhole_sort
     }
 
     # Aplicar cada algoritmo y medir el tiempo
