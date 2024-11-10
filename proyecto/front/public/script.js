@@ -1,6 +1,7 @@
 document.getElementById('boton-ejecutar').addEventListener('click', async () => {
     try {
-        const respuesta = await fetch('http://127.0.0.1:5000/api/ejecutar_funcion', {
+        //const respuesta = await fetch('http://127.0.0.1:5000/api/ejecutar_funcion', {
+        const respuesta = await fetch('https://analgo.onrender.com/api/ejecutar_funcion', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         });
