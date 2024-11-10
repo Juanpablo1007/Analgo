@@ -6,6 +6,7 @@ import networkx as nx
 import os
 import random
 import warnings
+import tkinter
 from collections import Counter
 
 warnings.filterwarnings('ignore')
