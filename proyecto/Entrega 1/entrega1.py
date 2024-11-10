@@ -164,6 +164,71 @@ class BibliometricAnalyzer:
         plt.close()
         print("Grafo de journals y artículos más citados generado y guardado en 'resultados/journal_graph.png'.")
 
+        # CARGAR PNGS ESTADISTICAS
+
+        # Cargar los archivos CSV generados
+        top_authors_df = pd.read_csv('resultados/top_authors.csv')
+        publications_by_year_df = pd.read_csv('resultados/publications_by_year.csv')
+        top_cited_articles_df = pd.read_csv('resultados/top_cited_articles.csv')
+        publications_by_source_df = pd.read_csv('resultados/publications_by_source.csv')
+        publications_by_publisher_df = pd.read_csv('resultados/publications_by_publisher.csv')
+
+
+    # Gráfico 1: Top autores
+        def plot_top_authors():
+            top_authors_df.plot(kind='bar', x='Author', y='Count', legend=False, color='skyblue')
+            plt.title('Top 15 Autores')
+            plt.xlabel('Autor')
+            plt.ylabel('Cantidad de Publicaciones')
+            plt.xticks(rotation=45, ha='right')
+            plt.tight_layout()
+            plt.savefig('resultados/top_authors.png')  # Guardar como PNG
+            plt.close()  # Cerrar la figura para liberar recursos
+
+        # Gráfico 2: Publicaciones por año
+        def plot_publications_by_year():
+            publications_by_year_df.plot(kind='line', x='Year', y='Count', marker='o', color='green')
+            plt.title('Publicaciones por Año')
+            plt.xlabel('Año')
+            plt.ylabel('Cantidad de Publicaciones')
+            plt.xticks(rotation=45)
+            plt.tight_layout()
+            plt.savefig('resultados/publications_by_year.png')  # Guardar como PNG
+            plt.close()
+
+        # Gráfico 3: Top artículos más citados
+        def plot_top_cited_articles():
+            top_cited_articles_df.plot(kind='bar', x='Title', y='citations', legend=False, color='orange')
+            plt.title('Top 15 Artículos Más Citados')
+            plt.xlabel('Título del Artículo')
+            plt.ylabel('Número de Citaciones')
+            plt.xticks(rotation=90, ha='center')
+            plt.tight_layout()
+            plt.savefig('resultados/top_cited_articles.png')  # Guardar como PNG
+            plt.close()
+
+        # Gráfico 4: Publicaciones por fuente
+        def plot_publications_by_source():
+            publications_by_source_df.plot(kind='bar', x='Source', y='Count', legend=False, color='purple')
+            plt.title('Publicaciones por Fuente')
+            plt.xlabel('Fuente')
+            plt.ylabel('Cantidad de Publicaciones')
+            plt.xticks(rotation=45, ha='right')
+            plt.tight_layout()
+            plt.savefig('resultados/publications_by_source.png')  # Guardar como PNG
+            plt.close()
+
+        # Gráfico 5: Publicaciones por editor
+        def plot_publications_by_publisher():
+            publications_by_publisher_df.plot(kind='bar', x='Publisher', y='Count', legend=False, color='lightcoral')
+            plt.title('Publicaciones por Editor')
+            plt.xlabel('Editor')
+            plt.ylabel('Cantidad de Publicaciones')
+            plt.xticks(rotation=45, ha='right')
+            plt.tight_layout()
+            plt.savefig('resultados/publications_by_publisher.png')  # Guardar como PNG
+            plt.close()
+
 # Función principal para ejecutar los requerimientos del proyecto
 def main():
     try:
@@ -184,7 +249,23 @@ def main():
         
         # Requerimiento 5: Grafo de journals y artículos más citados
         analyzer.generate_journal_graph()
-        
+
+        # Gráfico 1: Top autores
+        analyzer.plot_top_authors()
+
+        # Gráfico 2: Publicaciones por año
+        analyzer.plot_publications_by_year()
+
+        # Gráfico 3: Top artículos más citados
+        analyzer.plot_top_cited_articles()
+
+        # Gráfico 4: Publicaciones por fuente
+        analyzer.plot_publications_by_source()
+
+        # Gráfico 5: Publicaciones por editor
+        analyzer.plot_publications_by_publisher()
+
+       
         print("\nAnálisis completado exitosamente. Todos los resultados están en la carpeta 'resultados'.")
         
     except Exception as e:
