@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto de Análisis Bibliométrico</title>
     <link rel="stylesheet" href="design.css">
+    <!-- Importa Chart.js desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
 </head>
+
 <body>
     <header>
         <h1>Proyecto de Análisis de Algoritmos</h1>
@@ -17,10 +21,14 @@
             <li><a href="#grafo-journals">Relación Journals-Artículos</a></li>
         </ul>
     </nav>
-    <h1>Conectar HTML y Python con Flask</h1>
-    <form action="/ejecutar" method="post">
-        <button type="submit">Ejecutar función Python</button>
-    </form>
+
+    <h1>Ejecutar Función en el Backend</h1>
+    <button id="boton-ejecutar">Ejecutar función en backend</button>
+    <p id="resultado"></p>
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+
     <section id="estadisticas">
         <h2>Estadísticas Descriptivas</h2>
         <div class="estadisticas-container">
