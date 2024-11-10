@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS  # Permitir solicitudes desde un dominio diferente
 
@@ -17,4 +18,5 @@ def ejecutar_chart():
     return jsonify(resultado)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Usa el puerto asignado por Render o el puerto 5000 por defecto
+    app.run(debug=True, host="0.0.0.0", port=port)
