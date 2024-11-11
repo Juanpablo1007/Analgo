@@ -1,57 +1,508 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Proyecto de Análisis Bibliométrico</title>
-    <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="design.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <!-- Importa Chart.js desde CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js" defer></script>
-</head>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>Proyecto de Análisis de Algoritmos</h1>
+      <h1>Proyecto de Análisis de Algoritmos</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="#estadisticas">Estadísticas</a></li>
-            <li><a href="#nube-palabras">Nube de Palabras</a></li>
-            <li><a href="#grafo-journals">Relación Journals-Artículos</a></li>
+    <main class="d-flex flex-nowrap">
+      <div
+        class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark vh-auto"
+        style="width: 280px"
+      >
+        <a
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+        >
+          <span class="fs-4">Menu</span>
+        </a>
+        <hr />
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" id="boton-contexto" class="nav-link active text-white" aria-current="page">Contexto</a>
+          </li>
+          <li>
+            <a href="#" id="boton-requerimiento-1" class="nav-link text-white">Requerimiento 1</a>
+          </li>
+          <li>
+            <a href="#" id="boton-requerimiento-2" class="nav-link text-white">Requerimiento 2</a>
+          </li>
+          <li>
+            <a href="#" id="boton-requerimiento-3" class="nav-link text-white">Requerimiento 3</a>
+          </li>
+          <li>
+            <a href="#" id="boton-requerimiento-4" class="nav-link text-white">Requerimiento 4</a>
+          </li>
+          <li>
+            <a href="#" id="boton-requerimiento-5" class="nav-link text-white">Requerimiento 5</a>
+          </li>
         </ul>
-    </nav>
+        <hr />
+        <div class="dropdown">
+          <a
+            href="#"
+            class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="https://github.com/mdo.png"
+              alt=""
+              width="32"
+              height="32"
+              class="rounded-circle me-2"
+            />
+            <strong>mdo</strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
 
-    <h1>Ejecutar Función en el Backend</h1>
-    <button id="boton-ejecutar">Ejecutar función en backend</button>
-    <p id="resultado"></p>
-    <div class="chart-container">
-        <canvas id="myChart"></canvas>
-    </div>
+      <div class="b-example-divider b-example-vr"></div>
+      <!-- Contenido Principal -->
+      <div class="flex-grow-1 pe-3 ps-3">
+        <section id="estadisticas">
+          <div class="estadisticas-container">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Procesar datos
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">procesar datos</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    ¿Está seguro de procesar los datos en el servidor?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">No, cerrar</button>
+                    <button id="boton-cargar" type="button" class="btn btn-danger">Si, estoy seguro</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-    <section id="estadisticas">
-        <h2>Estadísticas Descriptivas</h2>
-        <div class="estadisticas-container">
+            <h1>Proyecto de Análisis Bibliométrico y Computacional</h1>
+            <p>
+              Este proyecto propone un análisis bibliométrico y computacional
+              centrado en el dominio del
+              <strong>pensamiento computacional</strong>, utilizando bases de
+              datos científicas de la Universidad del Quindío. Los objetivos
+              principales incluyen unificar la información científica en una
+              fuente común, generar estadísticas descriptivas sobre la
+              productividad académica y analizar la frecuencia de términos
+              específicos en el contenido de artículos.
+            </p>
+
+            <h2>Requerimientos del Proyecto</h2>
+            <ol>
+              <li>
+                <strong>Unificación de datos:</strong> Integrar todos los
+                registros de productos académicos en una sola fuente, evitando
+                duplicados.
+              </li>
+              <li>
+                <strong>Estadísticas descriptivas:</strong> Analizar variables
+                como el autor, año de publicación, tipo de producto, entre
+                otras, para los artículos más citados.
+              </li>
+              <li>
+                <strong>Frecuencia de categorías:</strong> Analizar el contenido
+                de abstracts para identificar frecuencias de términos
+                específicos en varias categorías (habilidades, conceptos
+                computacionales, actitudes, etc.), unificando sinónimos.
+              </li>
+              <li>
+                <strong>Nube de palabras clave:</strong> Crear una nube de
+                palabras generada a partir de términos encontrados en abstracts.
+              </li>
+              <li>
+                <strong>Representación gráfica:</strong> Desarrollar un grafo
+                que muestre la relación entre los 10 journals más relevantes y
+                los artículos con mayor citación, añadiendo información de país
+                y citaciones.
+              </li>
+              <li>
+                <strong>Despliegue del proyecto:</strong> Asegurar que la
+                aplicación esté implementada y disponible.
+              </li>
+            </ol>
+
+            <h2>Documento Final</h2>
+            <p>
+              El documento final deberá contener el diseño y arquitectura del
+              proyecto, explicaciones técnicas detalladas y una fundamentación
+              del uso de IA.
+            </p>
             <!-- Sección para mostrar gráficos estadísticos -->
             <canvas id="graficoEstadisticas"></canvas>
+          </div>
+        </section>
+
+        <!-- Sección Requerimiento 1 -->
+  <section id="requerimiento1" style="display: none;">
+    <h2>Requerimiento 1</h2>
+    <p>Contenido del Requerimiento 1...</p>
+  </section>
+
+  <!-- Sección Requerimiento 2 -->
+  <section id="requerimiento2" style="display: none;">
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #1
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_afiliaciones_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
         </div>
-    </section>
-    <section id="nube-palabras">
-        <h2>Nube de Palabras Clave</h2>
-        <div class="nube-container">
-            <!-- Aquí se generará la nube de palabras -->
-            <canvas id="nubePalabras"></canvas>
+      </div>
+      
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #2
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_articulos_citados_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
         </div>
-    </section>
-    <section id="grafo-journals">
-        <h2>Relación entre Journals y Artículos</h2>
-        <div class="grafo-container">
-            <!-- Representación del grafo -->
-            <canvas id="grafoJournals"></canvas>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #3
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_autor_pais_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
         </div>
-    </section>
-    <footer>
-        <p>&copy; 2024 Universidad del Quindío - Proyecto de Análisis de Algoritmos</p>
-    </footer>
-</body>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #4
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_autor_publisher_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #5
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_autores_citados_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #6
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_base_autor_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #7
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_base_datos_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #8
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_journal_articulo_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #9
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_journals_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #10
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_productos_por_tipo_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                Accordion Item #11
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+                <img id="image_publicaciones_por_año_counts" class="accordion-image" alt="Imagen desde Flask" />
+            </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                  Accordion Item #12
+              </button>
+          </h2>
+          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                  <img id="image_publishers_counts" class="accordion-image" alt="Imagen desde Flask" />
+              </div>
+          </div>
+      </div>
+      
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+                  Accordion Item #13
+              </button>
+          </h2>
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                  <img id="image_tipo_producto_año_counts" class="accordion-image" alt="Imagen desde Flask" />
+              </div>
+          </div>
+      </div>
+    
+    </div>
+  </section>
+
+  <!-- Sección Requerimiento 3 -->
+  <section id="requerimiento3" style="display: none;">
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #1
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_actitudes_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #2
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_computacionales_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #3
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_investigación_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #4
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_estrategia_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #5
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_habilidades_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #6
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_evaluación_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #7
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_herramienta_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #8
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_medio_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #9
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_escolaridad_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Accordion Item #10
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <img id="image_psicométricas_counts" class="accordion-image" alt="Imagen desde Flask" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Requerimiento 4 -->
+  <section id="requerimiento4" style="display: none;">
+    <h2>Requerimiento 4</h2>
+    <p>Contenido del Requerimiento 4...</p>
+    <img id="image_wordcloud" class="accordion-image" alt="Imagen desde Flask" />
+  </section>
+
+  <!-- Sección Requerimiento 5 -->
+  <section id="requerimiento5" style="display: none;">
+    <h2>Requerimiento 5</h2>
+    <p>Contenido del Requerimiento 5...</p>
+    <img id="image_journal_graph" class="accordion-image" alt="Imagen desde Flask" />
+  </section>
+      </div>
+
+      
+      <div class="b-example-divider b-example-vr"></div>
+    </main>
+  </body>
 </html>

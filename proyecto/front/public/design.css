@@ -10,6 +10,7 @@ header {
     color: #fff;
     text-align: center;
     padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.635);
 }
 
 nav ul {
@@ -63,3 +64,15 @@ footer {
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
+
+  .accordion-image {
+    width: 100%; /* Ajusta la imagen al ancho del acordeón */
+    height: auto; /* Mantiene la proporción original de la imagen */
+    max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+  }
+
+/* La imagen se ajusta para no salir del contenedor */
+#image {
+    max-width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: auto;    /* Mantiene la proporción original de la imagen */
+}
