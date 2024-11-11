@@ -242,22 +242,34 @@ class BibliometricAnalyzer:
             journal_articulo.to_csv(os.path.join(base_path, 'Requerimiento_2', 'journal_articulo.csv'), index=False)
             autor_publisher.to_csv(os.path.join(base_path, 'Requerimiento_2', 'autor_publisher.csv'), index=False)
             autor_pais.to_csv(os.path.join(base_path, 'Requerimiento_2', 'autor_pais.csv'), index=False)
-            def save_dataframe_as_image(dataframe, filename):
-                fig, ax = plt.subplots(figsize=(10, 6))  # Ajusta el tamaño de la imagen
-                ax.axis('off')
-                table = plt.table(cellText=dataframe.values, colLabels=dataframe.columns, loc='center', cellLoc='center')
-                table.scale(1, 1.5)  # Ajusta el tamaño de la tabla
-                plt.savefig(filename, bbox_inches='tight')
-                plt.close()
-            
-            save_dataframe_as_image(autores_citados, os.path.join(base_path, 'Requerimiento_2', 'autores_citados.png'))
-            save_dataframe_as_image(publicaciones_por_año, os.path.join(base_path, 'Requerimiento_2', 'publicaciones_por_año.png'))
-            save_dataframe_as_image(productos_por_tipo, os.path.join(base_path, 'Requerimiento_2', 'productos_por_tipo.png'))
-            save_dataframe_as_image(afiliaciones, os.path.join(base_path, 'Requerimiento_2', 'afiliaciones.png'))
-            save_dataframe_as_image(journals, os.path.join(base_path, 'Requerimiento_2', 'journals.png'))
-            save_dataframe_as_image(publishers, os.path.join(base_path, 'Requerimiento_2', 'publishers.png'))
-            save_dataframe_as_image(base_datos, os.path.join(base_path, 'Requerimiento_2', 'base_datos.png'))
-            save_dataframe_as_image(articulos_citados, os.path.join(base_path, 'Requerimiento_2','articulos_citados.png'))
+            def save_dataframe_as_bar_chart(dataframe, filename, column_labels):
+                try:
+                    fig, ax = plt.subplots(figsize=(10, 6))
+                    ax.bar(dataframe[column_labels[0]], dataframe[column_labels[1]])
+                    ax.set_xlabel(column_labels[0])
+                    ax.set_ylabel(column_labels[1])
+                    ax.set_title(f"Distribución de {column_labels[0]}")
+                    plt.xticks(rotation=45, ha='right')
+                    plt.tight_layout()  # Ajusta el diseño para evitar solapamiento
+                    plt.savefig(filename, bbox_inches='tight')
+                    plt.close()
+                except Exception as e:
+                    print(f"Error al generar el gráfico de barras: {e}")
+
+            # Ejemplo de uso
+            save_dataframe_as_bar_chart(autores_citados, os.path.join(base_path, 'Requerimiento_2', 'autores_citados_bar.png'), ['Authors', 'citations'])
+            save_dataframe_as_bar_chart(publicaciones_por_año, os.path.join(base_path, 'Requerimiento_2', 'publicaciones_por_año_bar.png'), ['Year', 'Cantidad de Productos'])
+            save_dataframe_as_bar_chart(productos_por_tipo, os.path.join(base_path, 'Requerimiento_2', 'productos_por_tipo_bar.png'), ['Tipo de Producto', 'Cantidad'])
+            save_dataframe_as_bar_chart(afiliaciones, os.path.join(base_path, 'Requerimiento_2', 'afiliaciones_bar.png'), ['Afiliación', 'Cantidad'])
+            save_dataframe_as_bar_chart(journals, os.path.join(base_path, 'Requerimiento_2', 'journals_bar.png'), ['Journal', 'Cantidad'])
+            save_dataframe_as_bar_chart(publishers, os.path.join(base_path, 'Requerimiento_2', 'publishers_bar.png'), ['Publisher', 'Cantidad'])
+            save_dataframe_as_bar_chart(base_datos, os.path.join(base_path, 'Requerimiento_2', 'base_datos_bar.png'), ['Base de Datos', 'Cantidad'])
+            save_dataframe_as_bar_chart(articulos_citados, os.path.join(base_path, 'Requerimiento_2', 'articulos_citados_bar.png'), ['Title', 'citations'])
+            save_dataframe_as_bar_chart(tipo_producto_año, os.path.join(base_path, 'Requerimiento_2', 'tipo_producto_año_bar.png'), ['product type', 'Cantidad'])
+            save_dataframe_as_bar_chart(base_autor, os.path.join(base_path, 'Requerimiento_2', 'base_autor_bar.png'), ['source', 'Cantidad'])
+            save_dataframe_as_bar_chart(journal_articulo, os.path.join(base_path, 'Requerimiento_2', 'journal_articulo_bar.png'), ['Journal', 'Cantidad'])
+            save_dataframe_as_bar_chart(autor_publisher, os.path.join(base_path, 'Requerimiento_2', 'autor_publisher_bar.png'), ['Authors', 'Cantidad'])
+            save_dataframe_as_bar_chart(autor_pais, os.path.join(base_path, 'Requerimiento_2', 'autor_pais_bar.png'), ['Authors', 'Cantidad'])
             
             print("Estadísticas descriptivas completas generadas y guardadas en 'resultados/Requerimiento_2'.")
         
@@ -365,7 +377,7 @@ class BibliometricAnalyzer:
         )
         
         # 3. Manejar países: asignar país aleatorio si no hay afiliación
-        self.unified_data['Country'] = self.unified_data['afiliacion_primer_autor'].apply(
+        self.unified_data['Country'] = self.unified_data['afiliacion_primer_autor'].fillna(random.choice(countries)).apply(
             lambda x: random.choice(countries) if pd.isna(x) else x
         )
         
@@ -444,7 +456,7 @@ class BibliometricAnalyzer:
         
         # Guardar el grafo
         plt.margins(0.15)
-        plt.savefig(os.path.join(base_path, 'journal_graph.png'), 
+        plt.savefig(os.path.join(base_path, 'Requerimiento_5','journal_graph.png'), 
                     bbox_inches='tight',
                     dpi=300,
                     format='png')
