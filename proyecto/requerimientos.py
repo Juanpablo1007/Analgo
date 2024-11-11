@@ -320,12 +320,13 @@ class BibliometricAnalyzer:
             plt.xlabel("Variable")
             plt.ylabel("Frecuencia")
             plt.tight_layout()
-            plt.savefig(os.path.join(base_path, f'{category}_counts.png'))
+            plt.savefig(os.path.join(base_path, f'{category.replace(" ", "_").lower()}_counts.png'))
             plt.close()
 
        
 
         print("Análisis de categorías completado y guardado en 'resultados/Requerimiento_3'.")
+
 # Requerimiento 4: Generar nube de palabras
     def generate_word_cloud(self):
         # Crear carpeta de resultados para Requerimiento 4
@@ -464,7 +465,7 @@ class BibliometricAnalyzer:
     
     print("Grafo generado y guardado en 'resultados/Requerimiento_5/journal_graph.png'")
 
-# Función principal para ejecutar los requerimientos del proyecto
+# Función principal para    los requerimientos del proyecto
 def main():
     try:
         print("Iniciando análisis bibliométrico...")
@@ -490,5 +491,26 @@ def main():
     except Exception as e:
         print(f"Error durante la ejecución: {str(e)}")
 
-if __name__ == "__main__":
-    main()
+def requerimiento1():
+    analyzer = BibliometricAnalyzer()
+    analyzer.load_and_unify_data()
+
+def requerimiento2():
+    analyzer = BibliometricAnalyzer()
+    analyzer.load_and_unify_data()
+    analyzer.generar_estadisticas_descriptivas_completas()
+
+def requerimiento3():
+    analyzer = BibliometricAnalyzer()
+    analyzer.load_and_unify_data()
+    analyzer.analyze_categories_in_abstracts()
+
+def requerimiento4():
+    analyzer = BibliometricAnalyzer()
+    analyzer.load_and_unify_data()
+    analyzer.generate_word_cloud()
+
+def requerimiento5():
+    analyzer = BibliometricAnalyzer()
+    analyzer.load_and_unify_data()
+    analyzer.generate_journal_graph()
